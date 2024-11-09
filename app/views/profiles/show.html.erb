@@ -1,0 +1,12 @@
+<h1>Perfil de <%= @profile.username %></h1>
+
+<p><strong>Biografía:</strong> <%= @profile.bio %></p>
+
+<div class="social-links">
+  <strong>Redes Sociales:</strong>
+  <p><a href="<%= @profile.twitter %>" target="_blank">Twitter</a></p>
+  <p><a href="<%= @profile.facebook %>" target="_blank">Facebook</a></p>
+  <p><a href="<%= @profile.instagram %>" target="_blank">Instagram</a></p>
+</div>
+
+<%= link_to 'Editar Perfil', edit_profile_path, class: "btn btn-primary" %>
