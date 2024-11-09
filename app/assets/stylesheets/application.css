@@ -199,6 +199,19 @@ form .actions input[type="submit"]:hover {
   width: 100%;
 }
 
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
 /* Estilo del enlace de Sign up */
 .signup-link {
   display: block;
@@ -239,3 +252,23 @@ form .actions input[type="submit"]:hover {
   color: #0c5460;
   border: 1px solid #bee5eb;
 }
+
+/* application.css */
+.social-links a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #007bff;
+}
+
+.social-links a:hover {
+  color: #0056b3;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.btn {
+  margin-top: 10px;
+}
+

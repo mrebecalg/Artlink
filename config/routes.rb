@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "profiles/show"
+  get "profiles/edit"
+  get "profiles/update"
   get "home/index"
   
   devise_for :users, skip: [:passwords] # Deshabilita las rutas de forgot password de devise
@@ -23,4 +26,7 @@ Rails.application.routes.draw do
   end
   
   root to: "home#index"
+
+  resource :profile, only: [:show, :edit, :update]
+
 end

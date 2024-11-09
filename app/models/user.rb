@@ -16,4 +16,16 @@ class User < ApplicationRecord
       end
     end
   end
+
+   # Un usuario tendra un perfil  
+  has_one :profile, dependent: :destroy
+  after_create :create_profile # Crea un perfil vacío al crear el usuario
+
+  private
+
+  def create_profile
+    Profile.create(user: self)
+  end
+
+
 end

@@ -3,6 +3,7 @@
 
 <% if user_signed_in? %>
   <p>Hola, <%= current_user.email %>!</p>
+  <%= link_to 'Ver Perfil', profile_path, class: 'btn btn-primary' %>
   <%= link_to 'Cambiar Contraseña', change_password_path, class: 'btn btn-primary' %>
   <%= button_to(
         "Log Out",
