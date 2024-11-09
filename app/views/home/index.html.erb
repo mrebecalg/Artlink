@@ -1,0 +1,16 @@
+<div class="container">
+<h1>Bienvenido a Mi Aplicación</h1>
+
+<% if user_signed_in? %>
+  <p>Hola, <%= current_user.email %>!</p>
+  <%= link_to 'Cambiar Contraseña', change_password_path, class: 'btn btn-primary' %>
+  <%= button_to(
+        "Log Out",
+        destroy_user_session_path,
+        method: :delete
+      ) %>
+<% else %>
+  <%= link_to 'Iniciar sesión', new_user_session_path %> |
+  <%= link_to 'Registrarse', new_user_registration_path %>
+<% end %>
+</div>
