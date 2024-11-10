@@ -1,12 +1,27 @@
+
 <h1>Perfil de <%= @profile.username %></h1>
 
-<p><strong>Biografía:</strong> <%= @profile.bio %></p>
+<p><strong>Biografía:</strong> <%= @profile.bio.presence || "No ha agregado una biografía todavía." %></p>
 
+<h3>Redes Sociales</h3>
 <div class="social-links">
-  <strong>Redes Sociales:</strong>
-  <p><a href="<%= @profile.twitter %>" target="_blank">Twitter</a></p>
-  <p><a href="<%= @profile.facebook %>" target="_blank">Facebook</a></p>
-  <p><a href="<%= @profile.instagram %>" target="_blank">Instagram</a></p>
+  <% if @profile.twitter_url.present? %>
+    <p><a href="<%= @profile.twitter_url %>" target="_blank">Twitter</a></p>
+  <% else %>
+    <p>No ha agregado un enlace a Twitter.</p>
+  <% end %>
+
+  <% if @profile.facebook_url.present? %>
+    <p><a href="<%= @profile.facebook_url %>" target="_blank">Facebook</a></p>
+  <% else %>
+    <p>No ha agregado un enlace a Facebook.</p>
+  <% end %>
+
+  <% if @profile.instagram_url.present? %>
+    <p><a href="<%= @profile.instagram_url %>" target="_blank">Instagram</a></p>
+  <% else %>
+    <p>No ha agregado un enlace a Instagram.</p>
+  <% end %>
 </div>
 
-<%= link_to 'Editar Perfil', edit_profile_path, class: "btn btn-primary" %>
+<%= link_to "Editar Perfil", edit_profile_path, class: "btn btn-primary" %>

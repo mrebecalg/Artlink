@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_09_193540) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_10_173600) do
   create_table "profiles", force: :cascade do |t|
     t.string "bio", limit: 160
     t.string "username", limit: 12
@@ -20,6 +20,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_09_193540) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "twitter_url"
+    t.string "facebook_url"
+    t.string "instagram_url"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -31,8 +34,10 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_09_193540) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "profiles", "users"

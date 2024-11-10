@@ -1,24 +1,15 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile
-  before_action :authenticate_user!
-  before_action :correct_user, only: [:edit, :update]
+  before_action :set_profile, only: [:show, :edit, :update]
 
-  private
-
-  def correct_user
-    redirect_to(root_path) unless current_user == @profile.user
-  end
   def show
-    @profile = current_user.profile || current_user.create_profile
   end
 
   def edit
-    @profile = current_user.profile
   end
 
   def update
     if @profile.update(profile_params)
-      redirect_to profile_path(@profile), notice: 'Perfil actualizado con éxito.'
+      redirect_to profile_path, notice: "Perfil actualizado exitosamente."
     else
       render :edit
     end
@@ -31,6 +22,6 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:bio, :username, :twitter, :facebook, :instagram)
+    params.require(:profile).permit(:username, :bio, :twitter_url, :facebook_url, :instagram_url)
   end
 end

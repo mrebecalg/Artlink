@@ -3,30 +3,22 @@ Rails.application.routes.draw do
   get "profiles/edit"
   get "profiles/update"
   get "home/index"
-  
-  devise_for :users, skip: [:passwords] # Deshabilita las rutas de forgot password de devise
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Define las rutas de Devise para :users, usando un solo bloque y saltando la ruta de :passwords
+  devise_for :users, skip: [:passwords], controllers: { registrations: 'registrations' }
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
-
-
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  # Defines the root path route ("/")
-  # root "posts#index"
-  
+  # Rutas adicionales para cambiar y actualizar la contraseña de usuario
   devise_scope :user do
     get 'users/change_password', to: 'users#change_password', as: 'change_password'
     patch 'users/update_password', to: 'users#update_password', as: 'update_password'
   end
-  
+
+  # Define la ruta root de la aplicación
   root to: "home#index"
 
+  # Rutas para perfiles, limitadas a show, edit y update
   resource :profile, only: [:show, :edit, :update]
 
+  # Rutas para el chequeo de salud de la aplicación
+  get "up" => "rails/health#show", as: :rails_health_check
 end

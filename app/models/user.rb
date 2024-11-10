@@ -24,7 +24,7 @@ class User < ApplicationRecord
   private
 
   def create_profile
-    Profile.create(user: self)
+    super if profile.nil?
   end
 
 
